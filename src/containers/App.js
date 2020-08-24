@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Person from './Person/Person'
+import Person from '../cmponents/Persons/Person/Person'
 import './App.module.css'
 import classes from './App.module.css';
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from "../ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -47,18 +47,6 @@ class App extends Component {
   }
 
   render () {
-    /*const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };*/
 
     let persons = null;
 
@@ -80,14 +68,7 @@ class App extends Component {
           })}
         </div>
       );
-
-      /*style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };*/
     }
-
 
     let assignedClasses = [];
 
