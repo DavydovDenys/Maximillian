@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Person from '../cmponents/Persons/Person/Person'
 import './App.module.css'
 import classes from './App.module.css';
-import ErrorBoundary from "../ErrorBoundary";
+import Persons from '../cmponents/Persons/Persons'
+import Cockpit from '../cmponents/Cockpit/Cockpit'
+
 
 class App extends Component {
   state = {
@@ -50,45 +52,37 @@ class App extends Component {
 
     let persons = null;
 
-    let btnClass = [classes.Button];
+    /*let btnClass = [classes.Button];*/
 
     if ( this.state.showPersons ) {
-      btnClass.push(classes.Red);
+      /*btnClass.push(classes.Red);*/
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <ErrorBoundary key={person.id}>
-              <Person
-                click={() => this.deletePersonHandler(index)}
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)} />
-            </ErrorBoundary>
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}/>
         </div>
-      );
+      )
     }
 
-    let assignedClasses = [];
+    /*let assignedClasses = [];*/
 
-    if (this.state.persons.length <= 2) {
+    /*if (this.state.persons.length <= 2) {
       assignedClasses.push(classes.red);
     }
 
     if (this.state.persons.length <= 1) {
       assignedClasses.push(classes.bold)
-    }
+    }*/
 
     return (
 
       <div className={classes.App}>
-        <h1>Hi, I'm a React App</h1>
-        <p className={assignedClasses.join(' ')}>This is really working!</p>
-        <button
-          className={btnClass.join(' ')}
-          onClick={this.togglePersonsHandler}>Toggle Persons
-        </button>
+        <Cockpit
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+          togglePersonsHandler={this.togglePersonsHandler}/>
         {persons}
       </div>
   );
