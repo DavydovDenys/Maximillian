@@ -24,6 +24,8 @@ const person = ( props ) => {
     throw new Error('Something went wrong');
   }*/
 
+  console.log('[Person.js] rendering...');
+
   return (
     /*<div className="Person" style={style}>*/
     <div className={classes.Person}>
