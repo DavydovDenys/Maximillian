@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   render () {
-
+    console.log('[App.js] render')
     let persons = null;
 
     /*let btnClass = [classes.Button];*/
@@ -95,6 +95,7 @@ class App extends Component {
 
       <div className={classes.App}>
         <Cockpit
+          title={this.props.title}
           persons={this.state.persons}
           showPersons={this.state.showPersons}
           togglePersonsHandler={this.togglePersonsHandler}/>
