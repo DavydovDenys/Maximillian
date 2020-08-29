@@ -8,7 +8,9 @@ const Cockpit = (props) => {
   useEffect(
     () => {
       console.log('[Cockpit.js] useEffect');
-  });
+      // http request...
+      setTimeout(() => {alert('Saved data to cloud!');}, 1000);
+    }, [props.persons]);
 
   /*изменяет цвет параграфа*/
   const assignedClasses = [];
