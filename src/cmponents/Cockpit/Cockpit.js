@@ -9,8 +9,11 @@ const Cockpit = (props) => {
     () => {
       console.log('[Cockpit.js] useEffect');
       // http request...
-      setTimeout(() => {alert('Saved data to cloud!');}, 1000);
-      return () => {console.log('[Cockpit.js] cleanup work in useEffect')};
+      const timer = setTimeout(() => {alert('Saved data to cloud!');}, 1000);
+      return () => {
+        clearTimeout(timer);
+        console.log('[Cockpit.js] cleanup work in useEffect')
+      };
     }, [props.persons]);
 
     useEffect(() => {
