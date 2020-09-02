@@ -5,6 +5,7 @@ import Persons from '../cmponents/Persons/Persons'
 import Cockpit from '../cmponents/Cockpit/Cockpit'
 import withClass from '../hoc/withClass'
 import Auxiliary from '../hoc/Auxiliary'
+import AuthContext from '../context/auth-context'
 
 
 class App extends Component {
@@ -65,7 +66,7 @@ class App extends Component {
       return {
         persons: persons,
         changeCounter: prevState.changeCounter + 1
-      };  
+      };
     });
   };
 
@@ -123,16 +124,22 @@ class App extends Component {
         }}>
           Remove Cockpit
         </button>
-        {this.state.showCockpit ? <Cockpit
-          title={this.props.title}
-          personsLength={this.state.persons.length}
-          showPersons={this.state.showPersons}
-          togglePersonsHandler={this.togglePersonsHandler}
-          login={this.loginHandler}
+
+        <AuthContext.Provider value={{
+          authenticated: this.state.authenticated,
+          login: this.loginHandler
+        }}>
+          {this.state.showCockpit ? <Cockpit
+            title={this.props.title}
+            personsLength={this.state.persons.length}
+            showPersons={this.state.showPersons}
+            togglePersonsHandler={this.togglePersonsHandler}
+            login={this.loginHandler}
           /> : null}
-        {persons}
+          {persons}
+        </AuthContext.Provider>
       </Auxiliary>
-  );
+    );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
