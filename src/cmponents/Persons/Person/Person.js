@@ -42,6 +42,7 @@ class Person extends Component {
   return (
     /*<div className="Person" style={style}>*/
     <Auxiliary>
+        {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>}
         <p onClick={this.props.clicked}>I'm {this.props.name} and I am {this.props.age} years old!</p>
         <p>{this.props.children}</p>
         <input 
